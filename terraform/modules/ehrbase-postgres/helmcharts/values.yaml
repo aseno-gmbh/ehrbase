@@ -1,0 +1,22 @@
+global:
+  imageRegistry: _SET_VALUE_HERE_ # XXXXXX.dkr.ecr.us-east-2.amazonaws.com #docker.io
+  maintainer: admin@aseno.de
+deployment:
+  image: _SET_VALUE_HERE_ #
+  containerPort: 5432
+  postgresUser: postgres
+  password: postgres
+  ehrbaseUser: ehrbase_restricted
+  ehrbasePassword: ehrbase_restricted
+  ehrbaseUserAdmin: ehrbase
+  ehrbasePasswordAdmin: ehrbase
+  resources:
+    cpuRequest: 100m
+    memoryRequest: 2000Mi
+    cpuLimit: 500m
+    memoryLimit: 3Gi
+
+service:
+  port: 5432
+
+

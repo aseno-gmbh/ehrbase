@@ -206,3 +206,23 @@ vulnerability_analysis.json
 application/.pgdata
 /plugin_dir/
 /plugin_config_dir/
+
+# Local .terraform directories
+**/.terraform/*
+**/configs/*
+**/temp/*
+.terraform/*
+# .tfstate files
+*.tfstate
+*.tfstate.*
+*.lock.hcl
+# Exclude all .tfvars files, which are likely to contain sensitive data, such as
+# password, private keys, and other secrets. These should not be part of version 
+# control as they are data points which are potentially sensitive and subject 
+# to change depending on the environment.
+*.tfvars
+*.tfvars.json
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+.terraform.lock.hcl

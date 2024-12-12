@@ -1,0 +1,23 @@
+global:
+  imageRegistry: _SET_VALUE_HERE_ # 
+  maintainer: admin@aseno.de
+deployment:
+  image: _SET_VALUE_HERE_ #
+  containerPort: 8080
+  serverNodename: local.ehrbase.org #ehrbase.cloud-doctor.eu
+  springProfileActive: local
+  resources:
+    cpuRequest: 100m
+    memoryRequest: 2000Mi
+    cpuLimit: 500m
+    memoryLimit: 3Gi
+
+service:
+  port: 8080
+
+db:
+   url: "jdbc:postgresql://ehrbase-postgres:5432/ehrbase"
+   user: "ehrbase_restricted"
+   pass: "ehrbase_restricted"
+   userAdmin: "ehrbase"
+   passAdmin: "ehrbase"

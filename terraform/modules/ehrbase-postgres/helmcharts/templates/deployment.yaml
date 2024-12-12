@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ehrbase-postgres
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: ehrbase-postgres
+spec:
+  selector:
+    matchLabels:
+      app: ehrbase-postgres
+      tier: ehrbase-postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ehrbase-postgres
+        tier: ehrbase-postgres
+    spec:
+      containers:
+      - name: ehrbase-postgres
+        image: {{ .Values.global.imageRegistry }}/{{ .Values.deployment.image }}
+        imagePullPolicy: IfNotPresent #Always 
+        resources:
+          limits:
+            cpu: {{ .Values.deployment.resources.cpuLimit }}
+            memory: {{ .Values.deployment.resources.memoryLimit }}
+          requests:
+            cpu: {{ .Values.deployment.resources.cpuRequest }}
+            memory: {{ .Values.deployment.resources.memoryRequest }}
+        ports:
+        - containerPort: {{ .Values.deployment.containerPort }}
+        env:
+        - name: POSTGRES_USER
+          value: {{ .Values.deployment.postgresUser }}
+        - name: PASSWORD
+          value: {{ .Values.deployment.password }}
+        - name: EHRBASE_USER
+          value: {{ .Values.deployment.ehrbaseUser }}
+        - name: EHRBASE_PASSWORD
+          value: {{ .Values.deployment.ehrbasePassword }}
+        - name: EHRBASE_USER_ADMIN
+          value: {{ .Values.deployment.ehrbaseUserAdmin }}
+        - name: EHRBASE_PASSWORD_ADMIN
+          value: {{ .Values.deployment.ehrbasePasswordAdmin }}

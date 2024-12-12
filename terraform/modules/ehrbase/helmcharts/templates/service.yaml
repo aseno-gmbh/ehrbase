@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name:  ehrbase
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: ehrbase
+spec:
+  selector:
+    app: ehrbase
+  ports:
+  - name: http
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.deployment.containerPort }}
